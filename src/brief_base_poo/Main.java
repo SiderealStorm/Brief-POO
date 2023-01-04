@@ -1,6 +1,7 @@
 package brief_base_poo;
 
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class Main {
 	
@@ -19,8 +20,8 @@ public class Main {
 		
 		
 		// Exercice 1
-		
-		System.out.println("Nombre de caractères de la chaîne : " + chain.length());
+
+		letterCount(chain);
 		
 		
 		// Exercice 2
@@ -132,6 +133,29 @@ public class Main {
 
 	
 	// Fonctions :
+	
+	// Exercice 1
+	
+	public static void letterCount(String chain) {
+		// Création d'un dictionnaire qui comptera le nombre de caractères:
+		HashMap<Character, Integer> letterCount = new HashMap<Character, Integer>();
+		Integer temp;
+		
+		// Remplissage du dictionnaire avec les caractères et leur fréquence:
+		for (int i = 0; i < chain.length(); i++) {
+			if (letterCount.containsKey(chain.charAt(i))) {
+				temp = Integer.sum(letterCount.get(chain.charAt(i)), 1);
+				letterCount.put(chain.charAt(i), temp);
+			} else {
+				letterCount.put(chain.charAt(i), 1);
+			}
+		}
+		
+		// Affichage du résultat:
+		for (Character key : letterCount.keySet()) {
+			System.out.println(key + " : " + letterCount.get(key));
+		}
+	}
 	
 	// Exercice 3
 	
